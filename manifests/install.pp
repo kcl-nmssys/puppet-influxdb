@@ -19,6 +19,7 @@ class influxdb::install {
             release  => $facts['os']['distro']['codename'],
             repos    => 'stable',
             key      => {
+              'id'     => $influxdb::repo_keyid,
               'source' => $influxdb::repo_keyurl,
             },
             before   => Package['influxdb'];
