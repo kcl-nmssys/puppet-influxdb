@@ -1,2 +1,4 @@
 ---
 influxdb::manage_repo: true
+influxdb::repo_url: https://repos.influxdata.com
+influxdb::repo_keyurl: https://repos.influxdata.com/influxdb.key
