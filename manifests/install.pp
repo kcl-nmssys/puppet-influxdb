@@ -26,10 +26,10 @@ class influxdb::install {
         }
       }
     }
+  }
 
-    package {
-      'influxdb':
-        ensure => 'present';
-    }
+  package {
+    'influxdb':
+      ensure => 'present';
   }
 }
