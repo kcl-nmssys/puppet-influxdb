@@ -28,6 +28,10 @@ class influxdb::config {
   }
 
   if $influxdb::http_https_enabled {
+    if $influxdb::http_https_certificate_content == '' or $influxdb::http_https_private_key_content == '' {
+      fail('If you enable https you must provide certificate and key')
+    }
+
     file {
       $influxdb::http_https_certificate_path:
         ensure  => 'present',
