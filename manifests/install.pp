@@ -28,7 +28,7 @@ class influxdb::install {
         }
       }
 
-      'default': {
+      default: {
         fail('Unsupported operating system.')
       }
     }
