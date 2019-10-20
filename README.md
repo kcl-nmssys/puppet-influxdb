@@ -45,6 +45,6 @@ This has been tested using InfluxDB 1.78 which was current as of October 2019.
 
 ## Development
 
-Pull requests are accepted on [https://github.com/xandm/puppet-influxdb](GitHub).
+Pull requests are accepted on [GitHub](https://github.com/xandm/puppet-influxdb).
 
 
