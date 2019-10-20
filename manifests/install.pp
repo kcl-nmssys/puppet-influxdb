@@ -1,3 +1,5 @@
+# Install class, don't use directly
+
 class influxdb::install {
   if $::influxdb::manage_repo {
     case $facts['os']['family'] {
@@ -24,6 +26,10 @@ class influxdb::install {
             },
             before   => Package['influxdb'];
         }
+      }
+
+      'default': {
+        fail('Unsupported operating system.')
       }
     }
   }

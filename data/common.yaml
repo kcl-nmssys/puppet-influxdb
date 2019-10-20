@@ -4,21 +4,94 @@ influxdb::repo_url: https://repos.influxdata.com
 influxdb::repo_keyurl: https://repos.influxdata.com/influxdb.key
 influxdb::repo_keyid: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
 influxdb::service_ensure: running
-influxdb::reporting_disabled: 'false'
-influxdb::bind_address: 127.0.0.1
-influxdb::bind_port: 8088
+
+influxdb::reporting_disabled: false
+
+influxdb::bind_address: '127.0.0.1:8088'
+
 influxdb::meta_dir: /var/lib/influxdb/meta
-influxdb::meta_retention_autocreate: 'true'
-influxdb::meta_logging_enabled: 'true'
+influxdb::meta_retention_autocreate: true
+influxdb::meta_logging_enabled: true
+
 influxdb::data_dir: /var/lib/influxdb/data
 influxdb::data_wal_dir: /var/lib/influxdb/wal
 influxdb::data_wal_fsync_delay: 0s
 influxdb::data_index_version: inmem
-influxdb::data_trace_logging_enabled: 'false'
-influxdb::data_query_log_enabled: 'true'
-influxdb::data_validate_keys: 'false'
+influxdb::data_trace_logging_enabled: false
+influxdb::data_query_log_enabled: true
+influxdb::data_validate_keys: false
 influxdb::data_cache_max_memory_size: 1G
 influxdb::data_cache_snapshot_memory_size: 25M
 influxdb::data_cache_snapshot_write_cold_duration: 10m
 influxdb::data_compact_full_write_cold_duration: 4h
 influxdb::data_max_concurrent_compactions: 0
+influxdb::data_compact_throughput: 48M
+influxdb::data_compact_throughput_burst: 48M
+influxdb::data_tsm_use_madv_willneed: false
+influxdb::data_max_series_per_database: 1000000
+influxdb::data_max_values_per_tag: 100000
+influxdb::data_max_index_log_file_size: 1M
+influxdb::data_series_id_set_cache_size: 100
+
+influxdb::coordinator_write_timeout: 10s
+influxdb::coordinator_max_concurrent_queries: 0
+influxdb::coordinator_query_timeout: 0s
+influxdb::coordinator_log_queries_after: 0s
+influxdb::coordinator_max_select_point: 0
+influxdb::coordinator_max_select_series: 0
+influxdb::coordinator_max_select_buckets: 0
+
+influxdb::retention_enabled: true
+influxdb::retention_check_interval: 30m
+
+influxdb::shard_precreation_enabled: true
+influxdb::shard_precreation_check_interval: 10m
+influxdb::shard_precreation_advance_period: 30m
+
+influxdb::monitor_store_enabled: true
+influxdb::monitor_store_database: _internal
+influxdb::monitor_store_interval: 10s
+
+influxdb::http_enabled: true
+influxdb::http_flux_enabled: false
+influxdb::http_flux_log_enabled: false
+influxdb::http_bind_address: ':8086'
+influxdb::http_auth_enabled: false
+influxdb::http_realm: InfluxDB
+influxdb::http_log_enabled: true
+influxdb::http_suppress_write_log: false
+influxdb::http_access_log_path: ''
+influxdb::http_access_log_status_filters: ''
+influxdb::http_write_tracing: false
+influxdb::http_pprof_enabled: true
+influxdb::http_debug_pprof_enabled: false
+influxdb::http_https_enabled: false
+influxdb::http_shared_secret: ''
+influxdb::http_max_row_limit: 0
+influxdb::http_max_connection_limit: 0
+influxdb::http_unix_socket_enabled: false
+influxdb::http_bind_socket: /var/run/influxdb.sock
+influxdb::http_max_body_size: 25000000
+influxdb::http_max_concurrent_write_limit: 0
+influxdb::http_max_enqueued_write_limit: 0
+influxdb::http_enqueued_write_timeout: 0
+
+influxdb::logging_format: auto
+influxdb::logging_level: info
+influxdb::logging_suppress_logo: false
+
+influxdb::subscriber_enabled: true
+influxdb::subscriber_http_timeout: 30s
+influxdb::subscriber_insecure_skip_verify: false
+influxdb::subscriber_ca_certs: ''
+influxdb::subscriber_write_concurrency: 40
+influxdb::subscriber_write_buffer_size: 1000
+
+influxdb::continuous_queries_enabled: true
+influxdb::continuous_queries_log_enabled: true
+influxdb::continuous_queries_query_stats_enabled: false
+influxdb::continuous_queries_run_interval: 1s
+
+influxdb::tls_ciphers: '"TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"'
+influxdb::tls_min_version: tls1.2
+influxdb::tls_max_version: tls1.2

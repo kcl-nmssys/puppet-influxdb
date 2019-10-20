@@ -1,0 +1,3 @@
+---
+influxdb::http_https_certificate: /etc/ssl/certs/InfluxDB.crt
+influxdb::http_https_private_key: /etc/ssl/private/InfluxDB.key
