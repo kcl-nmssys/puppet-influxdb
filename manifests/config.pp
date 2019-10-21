@@ -64,7 +64,8 @@ class influxdb::config {
 
   influxdb::user {
     'admin':
-      password => $influxdb::admin_password;
+      password => $influxdb::admin_password,
+      is_admin => true;
   }
 
   if $backup_enabled {
