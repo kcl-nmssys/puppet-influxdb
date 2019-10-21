@@ -54,7 +54,7 @@ class influxdb::config {
       $influxdb::http_https_private_key_path:
         ensure    => 'present',
         owner     => 'root',
-        group     => 'influxdb',
+        group     => $influxdb::http_https_private_key_group,
         mode      => '0440',
         content   => $influxdb::http_https_private_key_content,
         show_diff => false,

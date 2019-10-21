@@ -68,6 +68,7 @@ influxdb::http_debug_pprof_enabled: false
 influxdb::http_https_enabled: false
 influxdb::http_https_certificate_content: ''
 influxdb::http_https_private_key_content: ''
+influxdb::http_https_private_key_group: influxdb
 influxdb::http_shared_secret: ''
 influxdb::http_max_row_limit: 0
 influxdb::http_max_connection_limit: 0

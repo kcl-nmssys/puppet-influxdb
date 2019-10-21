@@ -66,6 +66,7 @@ class influxdb (
   String $http_https_certificate_content,
   String $http_https_private_key_path,
   String $http_https_private_key_content,
+  String $http_https_private_key_group,
   String $http_shared_secret,
   Integer $http_max_row_limit,
   Integer $http_max_connection_limit,
