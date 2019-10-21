@@ -32,6 +32,16 @@ class influxdb::config {
       fail('If you enable https you must provide certificate and key')
     }
 
+    if $facts['os']['family'] == 'Debian' {
+      exec {
+        'Add influxdb to ssl-cert group':
+          user    => 'root',
+          command => 'gpasswd -a influxdb ssl-cert',
+          unless  => "id influxdb | grep '(ssl-cert)'",
+          path    => ['/bin', '/usr/bin'];
+      }
+    }
+
     file {
       $influxdb::http_https_certificate_path:
         ensure  => 'present',
