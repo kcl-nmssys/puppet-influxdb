@@ -105,11 +105,11 @@ bind-address = "<%= scope['influxdb::bind_address'] %>"
   # CompactThroughput is the rate limit in bytes per second that we
   # will allow TSM compactions to write to disk. Note that short bursts are allowed
   # to happen at a possibly larger value, set by CompactThroughputBurst
-  # compact-throughput = "<%= scope['influxdb::data_compact_throughput'] %>"
+  compact-throughput = "<%= scope['influxdb::data_compact_throughput'] %>"
 
   # CompactThroughputBurst is the rate limit in bytes per second that we
   # will allow TSM compactions to write to disk.
-  # compact-throughput-burst = "<%= scope['influxdb::data_compact_throughput_burst'] %>"
+  compact-throughput-burst = "<%= scope['influxdb::data_compact_throughput_burst'] %>"
 
   # If true, then the mmap advise value MADV_WILLNEED will be provided to the kernel with respect to
   # TSM files. This setting has been found to be problematic on some kernels, and defaults to off.
