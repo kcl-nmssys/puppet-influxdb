@@ -4,7 +4,7 @@
 #   Name of database to create
 
 define influxdb::database (
-  Pattern[/\A[a-zA-Z0-9_]{2,20}z/] $database = $title,
+  Pattern[/\A[a-zA-Z0-9_]{2,20}\z/] $database = $title,
 ) {
 
   if $influxdb::http_https_enabled {

@@ -10,8 +10,8 @@
 #   Whether to grant or revoke access
 
 define influxdb::grant (
-  Pattern[/\A[a-zA-Z0-9_]{2,20}z/] $username,
-  Pattern[/\A[a-zA-Z0-9_]{2,20}z/] $database,
+  Pattern[/\A[a-zA-Z0-9_]{2,20}\z/] $username,
+  Pattern[/\A[a-zA-Z0-9_]{2,20}\z/] $database,
   Enum['READ', 'WRITE', 'ALL'] $access,
   Enum['present', 'absent'] $ensure = 'present',
 ) {
