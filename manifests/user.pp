@@ -13,12 +13,18 @@ define influxdb::user (
   Boolean $is_admin = false,
 ) {
 
-  $admin_str = bool2str($is_admin)
-
   if $influxdb::http_https_enabled {
     $influx_cmd = 'influx -ssl'
   } else {
     $influx_cmd = 'influx'
+  }
+
+  if $is_admin {
+    $admin_str = 'true'
+    $admin_privs = ' WITH ALL PRIVILEGES'
+  } else {
+    $admin_str = 'false'
+    $admin_privs = ''
   }
 
   exec {
@@ -26,7 +32,7 @@ define influxdb::user (
       user        => 'root',
       path        => ['/bin', '/usr/bin'],
       environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
-      command     => "${influx_cmd} -execute \"CREATE USER ${username} WITH PASSWORD '${password}' WITH ALL PRIVILEGES\"",
+      command     => "${influx_cmd} -execute \"CREATE USER ${username} WITH PASSWORD '${password}'${admin_privs}\"",
       unless      => "${influx_cmd} -execute 'SHOW USERS' -format csv | grep '^${username},${admin_str}'";
   }
 }
