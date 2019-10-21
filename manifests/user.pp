@@ -24,7 +24,7 @@ define influxdb::user (
   exec {
     "Create InfluxDB user ${username}":
       user        => 'root',
-      path        => ['/bin', '/usr/bin'];
+      path        => ['/bin', '/usr/bin'],
       environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
       command     => "${influx_cmd} -execute \"CREATE USER ${username} WITH PASSWORD '${password}' WITH ALL PRIVILEGES\"",
       unless      => "${influx_cmd} -execute 'SHOW USERS' -format csv | grep '^${username},${admin_str}'";
