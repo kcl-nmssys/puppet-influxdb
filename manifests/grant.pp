@@ -28,7 +28,7 @@ define influxdb::grant (
         user        => 'root',
         path        => ['/bin', '/usr/bin'],
         environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
-        command     => "${influx_cmd} -execute \"GRANT ${access} ON ${database} TO ${username}",
+        command     => "${influx_cmd} -execute 'GRANT ${access} ON ${database} TO ${username}'",
         unless      => "${influx_cmd} -execute 'SHOW GRANTS FOR ${username}' -format csv | grep '^${database},${access}'";
     }
   } else {
@@ -37,7 +37,7 @@ define influxdb::grant (
         user        => 'root',
         path        => ['/bin', '/usr/bin'],
         environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
-        command     => "${influx_cmd} -execute \"REVOKE ${access} ON ${database} FROM ${username}",
+        command     => "${influx_cmd} -execute 'REVOKE ${access} ON ${database} FROM ${username}'",
         onlyif      => "${influx_cmd} -execute 'SHOW GRANTS FOR ${username}' -format csv | grep '^${database},${access}'";
     }
   }
