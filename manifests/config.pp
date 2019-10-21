@@ -61,4 +61,34 @@ class influxdb::config {
         notify    => Service['influxdb'];
     }
   }
+
+  influxdb::user {
+    'admin':
+      password => $influxdb::admin_password;
+  }
+
+  if $backup_enabled {
+    file {
+      $backup_directory:
+        ensure => 'directory',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0700';
+    }
+
+    cron {
+      'InfluxDB daily backup':
+        ensure  => $backup_enabled,
+        user    => 'root',
+        hour    => $backup_hour,
+        minute  => $backup_minute,
+        command => "/usr/bin/influxd backup -portable ${backup_directory}";
+    }
+  } else {
+    cron {
+      'InfluxDB daily backup':
+        ensure => 'absent',
+        user   => 'root';
+    }
+  }  
 }
