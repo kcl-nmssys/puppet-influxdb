@@ -83,14 +83,14 @@ class influxdb::config {
         user    => 'root',
         hour    => $influxdb::backup_hour,
         minute  => $influxdb::backup_minute,
-        command => "/usr/bin/influxd backup -portable ${backup_directory}";
+        command => "/usr/bin/influxd backup -portable ${influxdb::backup_directory}";
 
       'InfluxDB tidy backups':
         ensure  => 'present',
         user    => 'root',
         hour    => $influxdb::backup_hour,
         minute  => $influxdb::backup_minute,
-        command => "/usr/bin/find ${influxdb::backup_directory} -mtime +${backup_keep} -type f -delete";
+        command => "/usr/bin/find ${influxdb::backup_directory} -mtime +${influxdb::backup_keep} -type f -delete";
     }
   } else {
     cron {
