@@ -68,9 +68,9 @@ class influxdb::config {
       is_admin => true;
   }
 
-  if $backup_enabled {
+  if $influxdb::backup_enabled {
     file {
-      $backup_directory:
+      $influxdb::backup_directory:
         ensure => 'directory',
         owner  => 'root',
         group  => 'root',
@@ -79,17 +79,24 @@ class influxdb::config {
 
     cron {
       'InfluxDB daily backup':
-        ensure  => $backup_enabled,
+        ensure  => 'present',
         user    => 'root',
         hour    => $backup_hour,
         minute  => $backup_minute,
         command => "/usr/bin/influxd backup -portable ${backup_directory}";
+
+      'InfluxDB tidy backups':
+        ensure  => 'present',
+        user    => 'root',
+        hour    => $backup_hour,
+        minute  => $backup_minute,
+        command => "/usr/bin/find ${influxdb::backup_directory} -mtime +${backup_keep} -type f -delete";
     }
   } else {
     cron {
-      'InfluxDB daily backup':
+      ['InfluxDB daily backup', 'InfluxDB tidy backups']:
         ensure => 'absent',
         user   => 'root';
     }
-  }  
+  }
 }

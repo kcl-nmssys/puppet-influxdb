@@ -9,6 +9,7 @@ influxdb::backup_enabled: true
 influxdb::backup_directory: /opt/influxdb-backups
 influxdb::backup_hour: 21
 influxdb::backup_minute: 17
+influxdb::backup_keep: 14
 
 influxdb::reporting_disabled: false
 

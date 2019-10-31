@@ -14,6 +14,7 @@ class influxdb (
   String $backup_directory,
   Integer[0,23] $backup_hour,
   Integer[0,59] $backup_minute,
+  Integer $backup_keep,
   Boolean $reporting_disabled,
   Pattern[/\A[0-9a-f:.]*:[0-9]+\z/] $bind_address,
   String $meta_dir,
@@ -105,4 +106,3 @@ class influxdb (
   Class['::influxdb::install']
   -> Class['::influxdb::config']
 }
-
