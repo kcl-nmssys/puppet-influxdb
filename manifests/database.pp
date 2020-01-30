@@ -13,6 +13,7 @@ define influxdb::database (
     $influx_cmd = 'influx'
   }
 
+  # TODO: convert to ruby
   exec {
     "Create InfluxDB database ${database}":
       user        => 'root',

@@ -1,7 +1,6 @@
 # Main class for influxdb
 #
-# @param manage_repo
-#   Whether to manage yum/apt repo
+# Most settings here relate to the config file, influxdb.conf.erb
 
 class influxdb (
   Boolean $manage_repo,

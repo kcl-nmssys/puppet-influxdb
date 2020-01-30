@@ -33,6 +33,7 @@ class influxdb::config {
     }
 
     if $facts['os']['family'] == 'Debian' {
+      # TODO: convert to ruby
       exec {
         'Add influxdb to ssl-cert group':
           user    => 'root',

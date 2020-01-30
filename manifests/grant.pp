@@ -22,6 +22,7 @@ define influxdb::grant (
     $influx_cmd = 'influx'
   }
 
+  # TODO: convert to ruby
   if $ensure == 'present' {
     exec {
       "Grant InfluxDB user ${username} access to ${database}":

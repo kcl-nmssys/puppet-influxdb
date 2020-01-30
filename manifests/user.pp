@@ -27,6 +27,7 @@ define influxdb::user (
     $admin_privs = ''
   }
 
+  # TODO: convert to ruby
   exec {
     "Create InfluxDB user ${username}":
       user        => 'root',

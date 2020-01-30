@@ -41,10 +41,8 @@ There are some exceptions:
 
 ## Limitations
 
-This has been tested using InfluxDB 1.78 which was current as of October 2019.
+This has been tested using InfluxDB 1.78 which was current as of October 2019. Not all configuration options have been templated.
 
 ## Development
 
-Pull requests are accepted on [GitHub](https://github.com/xandm/puppet-influxdb).
-
-
+Pull requests are accepted on [GitHub](https://github.com/kcl-nmssys/puppet-influxdb).
