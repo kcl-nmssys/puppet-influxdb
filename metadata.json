@@ -1,10 +1,12 @@
 {
-  "name": "xand-influxdb",
+  "name": "kclnmssys-influxdb",
   "version": "0.1.0",
-  "author": "Xand Meaden",
-  "summary": "",
-  "license": "Apache-2.0",
-  "source": "",
+  "author": "Xand Meaden, King's College London",
+  "summary": "This module manages InfluxDB.",
+  "license": "MIT",
+  "source": "https://github.com/kcl-nmssys/puppet-influxdb/",
+  "project_page": "https://github.com/kcl-nmssys/puppet-influxdb/",
+  "issues_url": "https://github.com/kcl-nmssys/puppet-influxdb/issues",
   "dependencies": [
 
   ],
