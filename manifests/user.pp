@@ -8,9 +8,9 @@
 #   Whether user is an admin
 
 define influxdb::user (
-  Pattern[/\A[a-zA-Z0-9_]{2,20}\z/] $username = $title,
   String $password,
   Boolean $is_admin = false,
+  Pattern[/\A[a-zA-Z0-9_]{2,20}\z/] $username = $title,
 ) {
 
   if $influxdb::http_https_enabled {
