@@ -114,7 +114,7 @@ influxdb::collectd_batch_size: 5000
 influxdb::collectd_batch_pending: 10
 influxdb::collectd_batch_timeout: "10s"
 influxdb::collectd_read_buffer: 0
-influxdb::collectd_typesdb: "/usr/share/collectd/types.db"
+influxdb::collectd_typesdb: ""
 influxdb::collectd_security_level: "none"
-influxdb::collectd_auth_file: "/etc/collectd/auth_file"
+influxdb::collectd_auth_file: ""
 influxdb::collectd_parse_multivalue_plugin: "split"
