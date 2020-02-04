@@ -43,23 +43,25 @@ class influxdb::config {
       }
     }
 
-    file {
-      $influxdb::http_https_certificate_path:
-        ensure  => 'present',
-        owner   => 'root',
-        group   => 'influxdb',
-        mode    => '0444',
-        content => $influxdb::http_https_certificate_content,
-        notify  => Service['influxdb'];
+    if $influxdb::manage_ssl_certs {
+      file {
+        $influxdb::http_https_certificate_path:
+          ensure  => 'present',
+          owner   => 'root',
+          group   => 'influxdb',
+          mode    => '0444',
+          content => $influxdb::http_https_certificate_content,
+          notify  => Service['influxdb'];
 
-      $influxdb::http_https_private_key_path:
-        ensure    => 'present',
-        owner     => 'root',
-        group     => $influxdb::http_https_private_key_group,
-        mode      => '0440',
-        content   => $influxdb::http_https_private_key_content,
-        show_diff => false,
-        notify    => Service['influxdb'];
+        $influxdb::http_https_private_key_path:
+          ensure    => 'present',
+          owner     => 'root',
+          group     => $influxdb::http_https_private_key_group,
+          mode      => '0440',
+          content   => $influxdb::http_https_private_key_content,
+          show_diff => false,
+          notify    => Service['influxdb'];
+      }
     }
   }
 

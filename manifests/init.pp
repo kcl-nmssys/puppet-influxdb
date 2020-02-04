@@ -4,6 +4,7 @@
 
 class influxdb (
   Boolean $manage_repo,
+  Boolean $manage_ssl_certs,
   String $repo_url,
   String $repo_keyurl,
   String $repo_keyid,
