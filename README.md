@@ -1,6 +1,7 @@
 # influxdb
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/kclnmssys/influxdb.svg)](https://forge.puppetlabs.com/kclnmssys/influxdb)
+[![Build Status](https://travis-ci.org/kcl-nmssys/puppet-influxdb.svg?branch=master)](https://travis-ci.org/kcl-nmssys/puppet-influxdb)
 
 #### Table of Contents
 
