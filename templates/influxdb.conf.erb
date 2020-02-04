@@ -96,17 +96,17 @@ bind-address = "<%= scope['influxdb::bind_address'] %>"
 
 [[collectd]]<% if scope.lookupvar('influxdb::collectd_enabled') %>
   enabled = <%= scope.call_function('bool2str', scope['influxdb::collectd_enabled']) %>
-  bind-address = <%= scope['influxdb::collectd_bind_address'] %>
-  database = <%= scope['influxdb::collectd_database'] %>
-  retention-policy = <%= scope['influxdb::collectd_retention_policy'] %>
+  bind-address = "<%= scope['influxdb::collectd_bind_address'] %>"
+  database = "<%= scope['influxdb::collectd_database'] %>"
+  retention-policy = "<%= scope['influxdb::collectd_retention_policy'] %>"
   batch-size = <%= scope['influxdb::collectd_batch_size'] %>
   batch-pending = <%= scope['influxdb::collectd_batch_pending'] %>
-  batch-timeout = <%= scope['influxdb::collectd_batch_timeout'] %>
+  batch-timeout = "<%= scope['influxdb::collectd_batch_timeout'] %>"
   read-buffer = <%= scope['influxdb::collectd_read_buffer'] %>
-  typesdb = <%= scope['influxdb::collectd_typesdb'] %>
-  security-level = <%= scope['influxdb::collectd_security_level'] %>
-  auth-file = <%= scope['influxdb::collectd_auth_file'] %>
-  parse-multivalue-plugin = <%= scope['influxdb::collectd_parse_multivalue_plugin'] %>
+  typesdb = "<%= scope['influxdb::collectd_typesdb'] %>"
+  security-level = "<%= scope['influxdb::collectd_security_level'] %>"
+  auth-file = "<%= scope['influxdb::collectd_auth_file'] %>"
+  parse-multivalue-plugin = "<%= scope['influxdb::collectd_parse_multivalue_plugin'] %>"
 <% end %>
 [[opentsdb]]
 
