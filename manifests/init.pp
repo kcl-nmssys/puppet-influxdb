@@ -98,6 +98,18 @@ class influxdb (
   String $tls_ciphers,
   String $tls_min_version,
   String $tls_max_version,
+  Boolean $collectd_enabled,
+  Pattern[/\A[0-9a-f:.]*:[0-9]+\z/] $collectd_bind_address,
+  String $collectd_database,
+  String $collectd_retention_policy,
+  Integer $collectd_batch_size,
+  Integer $collectd_batch_pending,
+  Pattern[/\A[0-9]+(h|m|s|ms)\z/] $collectd_batch_timeout,
+  Integer $collectd_read_buffer,
+  String $collectd_typesdb,
+  String $collectd_security_level,
+  String $collectd_auth_file,
+  String $collectd_parse_multivalue_plugin,
 ) {
 
   contain ::influxdb::install

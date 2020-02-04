@@ -105,3 +105,16 @@ influxdb::continuous_queries_run_interval: 1s
 influxdb::tls_ciphers: '"TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"'
 influxdb::tls_min_version: tls1.2
 influxdb::tls_max_version: tls1.2
+
+influxdb::collectd_enabled: false
+influxdb::collectd_bind_address: ":25826"
+influxdb::collectd_database: "collectd"
+influxdb::collectd_retention_policy: ""
+influxdb::collectd_batch_size: 5000
+influxdb::collectd_batch_pending: 10
+influxdb::collectd_batch_timeout: "10s"
+influxdb::collectd_read_buffer: 0
+influxdb::collectd_typesdb: "/usr/share/collectd/types.db"
+influxdb::collectd_security_level: "none"
+influxdb::collectd_auth_file: "/etc/collectd/auth_file"
+influxdb::collectd_parse_multivalue_plugin: "split"
