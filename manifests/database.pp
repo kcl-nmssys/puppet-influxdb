@@ -20,6 +20,7 @@ define influxdb::database (
       path        => ['/bin', '/usr/bin'],
       environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
       command     => "${influx_cmd} -execute 'CREATE DATABASE ${database}'",
-      unless      => "${influx_cmd} -execute 'SHOW DATABASES' -format csv | grep 'databases,${database}\$'";
+      unless      => "${influx_cmd} -execute 'SHOW DATABASES' -format csv | grep 'databases,${database}\$'",
+      require     => [Package['influxdb'], Service['influxdb']];
   }
 }

@@ -34,6 +34,7 @@ define influxdb::user (
       path        => ['/bin', '/usr/bin'],
       environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
       command     => "${influx_cmd} -execute \"CREATE USER ${username} WITH PASSWORD '${password}'${admin_privs}\"",
-      unless      => "${influx_cmd} -execute 'SHOW USERS' -format csv | grep '^${username},${admin_str}'";
+      unless      => "${influx_cmd} -execute 'SHOW USERS' -format csv | grep '^${username},${admin_str}'",
+      require     => [Package['influxdb'], Service['influxdb']];
   }
 }
