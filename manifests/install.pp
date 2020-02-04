@@ -35,10 +35,4 @@ class influxdb::install {
   }
 
   ensure_packages(['influxdb'])
-
-  if ($facts['os']['family'] == 'Debian') {
-    ensure_packages(['influxdb-client'], {
-      before => Package['influxdb']
-    })
-  }
 }
