@@ -32,6 +32,7 @@ Most parameters for `influxdb` come from the config file, e.g. `meta_retention_a
 There are some exceptions:
 
  * `manage_repo` - whether to manage the yum/apt repository
+ * `manage_ssl_certs` - whether to manage the SSL certs
  * `repo_url` - base of repository URL
  * `repo_keyurl` - URL of repository GPG key
  * `repo_keyid` - fingerprint of repository GPG key
