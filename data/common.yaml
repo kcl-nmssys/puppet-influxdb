@@ -12,6 +12,8 @@ influxdb::backup_hour: 21
 influxdb::backup_minute: 17
 influxdb::backup_keep: 14
 
+influxdb::api_unsafe_ssl: false
+
 influxdb::reporting_disabled: false
 
 influxdb::bind_address: '127.0.0.1:8088'

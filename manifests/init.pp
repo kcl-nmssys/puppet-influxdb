@@ -15,6 +15,7 @@ class influxdb (
   Integer[0,23] $backup_hour,
   Integer[0,59] $backup_minute,
   Integer $backup_keep,
+  Boolean $api_unsafe_ssl,
   Boolean $reporting_disabled,
   Influxdb::Bindaddr $bind_address,
   String $meta_dir,
@@ -117,4 +118,14 @@ class influxdb (
 
   Class['::influxdb::install']
   -> Class['::influxdb::config']
+
+  if $http_https_enabled {
+    if $api_unsafe_ssl {
+      $influx_cmd = 'influx -ssl -unsafeSsl'
+    } else {
+      $influx_cmd = 'influx -ssl'
+    }
+  } else {
+    $influx_cmd = 'influx'
+  }
 }
