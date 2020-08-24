@@ -16,12 +16,6 @@ define influxdb::grant (
   Enum['present', 'absent'] $ensure = 'present',
 ) {
 
-  if $influxdb::http_https_enabled {
-    $influx_cmd = 'influx -ssl'
-  } else {
-    $influx_cmd = 'influx'
-  }
-
   # TODO: convert to ruby
   if $ensure == 'present' {
     exec {
@@ -29,8 +23,8 @@ define influxdb::grant (
         user        => 'root',
         path        => ['/bin', '/usr/bin'],
         environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
-        command     => "${influx_cmd} -execute 'GRANT ${access} ON ${database} TO ${username}'",
-        unless      => "${influx_cmd} -execute 'SHOW GRANTS FOR ${username}' -format csv | grep '^${database},${access}'",
+        command     => "${influxdb::influx_cmd} -execute 'GRANT ${access} ON ${database} TO ${username}'",
+        unless      => "${influxdb::influx_cmd} -execute 'SHOW GRANTS FOR ${username}' -format csv | grep '^${database},${access}'",
         require     => [Package['influxdb'], Service['influxdb']];
     }
   } else {
@@ -39,8 +33,8 @@ define influxdb::grant (
         user        => 'root',
         path        => ['/bin', '/usr/bin'],
         environment => ['INFLUX_USERNAME=admin', "INFLUX_PASSWORD=${influxdb::admin_password}"],
-        command     => "${influx_cmd} -execute 'REVOKE ${access} ON ${database} FROM ${username}'",
-        onlyif      => "${influx_cmd} -execute 'SHOW GRANTS FOR ${username}' -format csv | grep '^${database},${access}'",
+        command     => "${influxdb::influx_cmd} -execute 'REVOKE ${access} ON ${database} FROM ${username}'",
+        onlyif      => "${influxdb::influx_cmd} -execute 'SHOW GRANTS FOR ${username}' -format csv | grep '^${database},${access}'",
         require     => [Package['influxdb'], Service['influxdb']];
     }
   }

@@ -1,6 +1,6 @@
 {
   "name": "kclnmssys-influxdb",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Xand Meaden, King's College London",
   "summary": "This module manages InfluxDB.",
   "license": "MIT",
