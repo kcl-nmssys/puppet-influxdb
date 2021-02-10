@@ -8,8 +8,10 @@ influxdb::service_ensure: running
 
 influxdb::backup_enabled: true
 influxdb::backup_directory: /opt/influxdb-backups
-influxdb::backup_hour: 21
-influxdb::backup_minute: 17
+influxdb::daily_backup_hour: 22
+influxdb::daily_backup_minute: 17
+influxdb::daily_tidy_hour: 21
+influxdb::daily_tidy_minute: 17
 influxdb::backup_keep: 14
 
 influxdb::api_unsafe_ssl: false
