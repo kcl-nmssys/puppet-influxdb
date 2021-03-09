@@ -4,9 +4,19 @@ class influxdb::install {
   if $::influxdb::manage_repo {
     case $facts['os']['family'] {
       'RedHat': {
+        case $facts['os']['name'] {
+          'Amazon': {
+            $name_os = 'rhel'
+            $maj_rel = '7'
+          }
+          default: {
+            $name_os = 'centos'
+            $maj_rel = $facts['operatingsystemmajrelease']
+          }
+        }
         yumrepo {
           'InfluxDB':
-            baseurl  => "${influxdb::repo_url}/centos/${facts['operatingsystemmajrelease']}/${facts['architecture']}/stable",
+            baseurl  => "${influxdb::repo_url}/${name_os}/${maj_rel}/${facts['architecture']}/stable",
             gpgcheck => true,
             gpgkey   => $influxdb::repo_keyurl,
             before   => Package['influxdb'];
@@ -36,3 +46,4 @@ class influxdb::install {
 
   ensure_packages(['influxdb'])
 }
+
