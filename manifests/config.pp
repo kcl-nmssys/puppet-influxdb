@@ -28,10 +28,6 @@ class influxdb::config {
   }
 
   if $influxdb::http_https_enabled {
-    if $influxdb::http_https_certificate_content == '' or $influxdb::http_https_private_key_content == '' {
-      fail('If you enable https you must provide certificate and key')
-    }
-
     if $facts['os']['family'] == 'Debian' {
       # TODO: convert to ruby
       exec {
@@ -44,6 +40,10 @@ class influxdb::config {
     }
 
     if $influxdb::manage_ssl_certs {
+      if $influxdb::http_https_certificate_content == '' or $influxdb::http_https_private_key_content == '' {
+        fail('If you enable manage_ssl_certs you must provide certificate and key')
+      }
+
       file {
         $influxdb::http_https_certificate_path:
           ensure  => 'present',
